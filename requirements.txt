@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+redis
+passlib[bcrypt]
+python-jose
+boto3

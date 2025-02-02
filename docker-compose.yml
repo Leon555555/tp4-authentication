@@ -1,0 +1,31 @@
+
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://user:password@db/db
+      - REDIS_HOST=redis
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db
+
+  redis:
+    image: redis:alpine
+
+  s3:
+    image: minio/minio
+    environment:
+      - MINIO_ROOT_USER=minio
+      - MINIO_ROOT_PASSWORD=minio123
+    ports:
+      - "9000:9000"
+    command: server /data
