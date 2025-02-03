@@ -5,3 +5,5 @@ passlib[bcrypt]
 python-jose
 boto3
 pytest
+anyio
+httpx
